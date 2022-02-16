@@ -5,25 +5,27 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; Row 1
 F13::
-; Play/Pause Media
 Send {Media_Play_Pause}
 return
 
 F14::
-; Launch Steam
 Run, C:\Program Files (x86)\Steam\steam.exe
 return
 
 F15::
 ; Voicemeter
 if WinExist("VoiceMeeter")
-    WinActivate ; focus Voicemeeter window
+    WinActivate ; use the window found above
+else
+    WinActivate, Calculator
 return
 
 F16::
-; PIA VPN Connect
+; PIA VPN Connect/Disconnect
 Run, C:\Program Files\Private Internet Access\piactl.exe connect
 Sleep, 200
+Send, {Tab down}{Tab up}
+Send {Space down}{Space up}
 return
 
 ; Row 2
@@ -41,10 +43,19 @@ Run, C:\Users\mattr\AppData\Roaming\Spotify\Spotify.exe
 return
 
 F20::
-Run, C:\Program Files\Microsoft VS Code\Code.exe
+; Dev folder
+Run, E:\Dev
+return
+
+; Run, C:\Program Files\Microsoft VS Code\Code.exe
+
+AppsKey::F21
+
+F21::
+; Search Everything
+Run, C:\Program Files\Everything\Everything.exe
 return
 
 
-; Dev folder
-;Run, E:\Dev
-;return
+::@@::mattrencher@gmail.com
+::@tech::renchtechnology@gmail.com
